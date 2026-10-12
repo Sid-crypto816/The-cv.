@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>About Me</title>
@@ -15,138 +16,89 @@
             align-items: center;
             background:
                 linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-                url("bleach-thousand-3840x2160-19704.png");
+                url("Sidharth Anime Welcome Banner.png");
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
 
-     .page {
-    width: 95%;
-    max-width: 1300px;
-    min-height: calc(100vh - 140px);
-    box-sizing: border-box;
-    padding: 60px 40px;
-    margin: 90px 0 40px 0;
-    border-radius: 12px;
-    color: white;
-    background:
-        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        url("Screenshot 2026-10-12 172731.png");
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 10px 30px rgba(168, 105, 105, 0.5);
-}
-
-        /* video sabke upar + dim */
-        .bg-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 9999;
-            opacity: 0.40;
-            pointer-events: none;
-        }
-
-        /* orange buttons */
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            margin: 6px;
-            background: #ff7a00;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            border: 2px solid #ff7a00;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            background: transparent;
-            color: #ff7a00;
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(255, 122, 0, 0.9);
-        }
-
-        /* music on/off button (corner) */
-        .music-btn {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            border: 2px solid #ff7a00;
-            background: #ff7a00;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 10000;
-            transition: all 0.3s ease;
-        }
-
-        .music-btn:hover {
-            background: transparent;
-            color: #ff7a00;
-            transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(255, 122, 0, 0.6);
-        }
-
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+        /* ===== SMOOTH GLASS CONTAINER (bada box) ===== */
+        .glass-container {
+            width: 95%;
+            max-width: 1200px;
+            box-sizing: border-box;
             display: flex;
+            align-items: flex-start;
+            gap: 35px;
+            padding: 60px 50px;
+            margin: 100px 0 40px 0;
+            border-radius: 26px;
+            color: white;
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.10),
+                    rgba(255, 255, 255, 0.02));
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        /* left: main content */
+        .content {
+            flex: 1;
+        }
+
+        .content hr {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        /* right: chhota square glass card */
+        .side-card {
+            width: 240px;
+            height: 240px;
+            flex-shrink: 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
-            gap: 40px;
-            padding: 18px 0;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(6px);
-            z-index: 10000;
-        }
-
-        .navbar a {
-            color: #e65c00;
-            text-decoration: none;
-            font-weight: bold;
-            letter-spacing: 1px;
-            padding-bottom: 4px;
-            border-bottom: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .navbar a:hover,
-        .navbar a.active {
-            color: #ff7a00;
-            border-bottom: 2px solid #ff7a00;
-        }
-
-        /* ===== ABOUT PAGE ===== */
-        .intro {
-            display: flex;
             align-items: center;
-            gap: 25px;
+            text-align: center;
+            border-radius: 22px;
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.10),
+                    rgba(255, 255, 255, 0.02));
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
         }
 
         .avatar {
-            width: 90px;
-            height: 90px;
+            width: 95px;
+            height: 95px;
             border-radius: 50%;
             background: #ff7a00;
             color: white;
-            font-size: 40px;
+            font-size: 38px;
             font-weight: bold;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-shrink: 0;
+            box-shadow: 0 0 20px rgba(255, 122, 0, 0.5);
         }
 
+        .side-card h3 {
+            margin: 14px 0 4px 0;
+        }
+
+        .side-card p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* ===== TAGS (glass) ===== */
         .tag-container {
             display: flex;
             flex-wrap: wrap;
@@ -155,14 +107,197 @@
 
         .tag {
             padding: 8px 16px;
-            border: 2px solid #ff7a00;
+            border: 1px solid rgba(255, 140, 40, 0.7);
             border-radius: 20px;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(255, 122, 0, 0.15);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
             font-weight: bold;
+            text-shadow: none;
+            transition: all 0.3s ease;
         }
 
         .tag:hover {
             background: #ff7a00;
+            border-color: #ff7a00;
+        }
+
+        /* ===== BUTTONS (orange glass, hover pe snow white) ===== */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 6px 6px 6px 0;
+            background: rgba(255, 122, 0, 0.30);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid rgba(255, 140, 40, 0.6);
+            border-radius: 12px;
+            text-shadow: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #fffafa;
+            border-color: #fffafa;
+            color: #1a1a1a;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(255, 250, 250, 0.45);
+        }
+
+        /* ===== MUSIC CONTROL (top right) ===== */
+        .music-box {
+            position: fixed;
+            top: 15px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 16px 6px 6px;
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.10),
+                    rgba(255, 255, 255, 0.02));
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 50px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+        }
+
+        .music-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #ff7a00;
+            background: #ff7a00;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 122, 0, 0.7);
+        }
+
+        /* music ON ho to button white */
+        .music-btn.on {
+            background: white;
+            border-color: white;
+            color: #ff7a00;
+        }
+
+        /* volume slider (orange fill + white rest) */
+        .volume {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100px;
+            height: 6px;
+            border-radius: 10px;
+            outline: none;
+            cursor: pointer;
+            background: linear-gradient(to right,
+                    #ff7a00 0%, #ff7a00 var(--fill, 50%),
+                    rgba(255, 255, 255, 0.35) var(--fill, 50%), rgba(255, 255, 255, 0.35) 100%);
+        }
+
+        .volume::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid #ff7a00;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .volume::-moz-range-thumb {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid #ff7a00;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .volume:hover::-webkit-slider-thumb,
+        .volume:active::-webkit-slider-thumb {
+            transform: scale(1.25);
+            box-shadow: 0 0 10px rgba(255, 122, 0, 0.8);
+        }
+
+        .volume:hover::-moz-range-thumb,
+        .volume:active::-moz-range-thumb {
+            transform: scale(1.25);
+            box-shadow: 0 0 10px rgba(255, 122, 0, 0.8);
+        }
+
+        /* volume number (0 - 100) */
+        .vol-num {
+            min-width: 28px;
+            text-align: right;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .volume:hover~.vol-num,
+        .volume:active~.vol-num {
+            color: #ff7a00;
+        }
+
+        /* ===== NAVBAR (smooth glass pill + sliding) ===== */
+        .navbar {
+            position: fixed;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            padding: 6px;
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.10),
+                    rgba(255, 255, 255, 0.02));
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 50px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+        }
+
+        .navbar a {
+            position: relative;
+            z-index: 2;
+            color: #ff9a3c;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 1px;
+            padding: 10px 22px;
+            border-radius: 50px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: white;
+        }
+
+        .nav-slider {
+            position: absolute;
+            top: 6px;
+            bottom: 6px;
+            left: 0;
+            width: 0;
+            background: #ff7a00;
+            border-radius: 50px;
+            z-index: 1;
+            transition: left 0.35s ease, width 0.35s ease;
         }
 
 
@@ -170,23 +305,37 @@
         @media screen and (max-width: 768px) {
 
             .navbar {
-                gap: 16px;
-                padding: 14px 0;
-                font-size: 15px;
+                top: 10px;
+                padding: 4px;
             }
 
-            .page {
-                width: 94%;
-                min-height: auto;
-                padding: 25px 18px;
-                margin: 75px 0 30px 0;
-                            .page {
-                background:
-                    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                    url("Screenshot 2026-10-12 172731.png");
-                background-size: cover;
-                background-position: center top;
+            .navbar a {
+                padding: 8px 12px;
+                font-size: 14px;
             }
+
+            .glass-container {
+                flex-direction: column-reverse;
+                align-items: center;
+                width: 94%;
+                padding: 28px 20px;
+                margin: 110px 0 30px 0;
+                gap: 22px;
+            }
+
+            .content {
+                width: 100%;
+            }
+
+            .side-card {
+                width: 170px;
+                height: 170px;
+            }
+
+            .avatar {
+                width: 72px;
+                height: 72px;
+                font-size: 28px;
             }
 
             h1 {
@@ -202,11 +351,6 @@
                 font-size: 16px;
             }
 
-            .intro {
-                flex-direction: column;
-                text-align: center;
-            }
-
             .tag {
                 padding: 7px 14px;
                 font-size: 15px;
@@ -217,115 +361,180 @@
                 font-size: 16px;
             }
 
-            .music-btn {
-                width: 48px;
-                height: 48px;
-                font-size: 20px;
-                bottom: 15px;
-                right: 15px;
+            .music-box {
+                top: 62px;
+                right: 10px;
+                gap: 8px;
+                padding: 4px 12px 4px 4px;
             }
 
+            .music-btn {
+                width: 34px;
+                height: 34px;
+                font-size: 16px;
+            }
+
+            .volume {
+                width: 80px;
+            }
+
+            .vol-num {
+                font-size: 13px;
+            }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </style>
 </head>
 
 <body>
 
     <nav class="navbar">
+        <span class="nav-slider"></span>
         <a href="index.html">Home</a>
         <a href="about.html" class="active">About</a>
         <a href="projects.html">Projects</a>
         <a href="cv.html">CV</a>
     </nav>
 
-    <video autoplay muted loop playsinline class="bg-video">
-        <source src="Video_Project.mp4" type="video/mp4">
-    </video>
-
     <audio id="bgMusic" loop>
         <source src="bleach-pv-ost-shiro-sagisu-hazel-fernandes-number-one-2022-ver-extended.mp3" type="audio/mpeg">
     </audio>
 
-    <button id="musicBtn" class="music-btn">🔇</button>
+    <div class="music-box">
+        <button id="musicBtn" class="music-btn">🔇</button>
+        <input type="range" id="volume" class="volume" min="0" max="100" value="50">
+        <span id="volNum" class="vol-num">50</span>
+    </div>
 
-    <div class="page">
+    <div class="glass-container">
 
-        
-        <div class="intro">
-            <div class="avatar">Sid</div>
-            <div>
-                <h1>About Me</h1>
-                <p>Hi, I'm Sid. A B.Tech CSE student learning web development step by step.</p>
+        <!-- LEFT: main content -->
+        <div class="content">
+
+            <h1>About Me</h1>
+            <p>Hi, I'm Sid. A B.Tech CSE student learning web development step by step.</p>
+
+            <hr>
+
+            <h2>Currently Learning</h2>
+            <div class="tag-container">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">C</span>
             </div>
+
+            <h2>Goals for the Future</h2>
+            <div class="tag-container">
+                <span class="tag">C++</span>
+                <span class="tag">Python</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">DSA</span>
+                <span class="tag">Full-Stack Development</span>
+            </div>
+
+            <h2>Hobbies</h2>
+            <ul>
+                <li>Watching anime</li>
+                <li>doing random stuff</li>
+                <li>Born to customize</li>
+            </ul>
+
+            <h2>My Goal</h2>
+            <p>To become a strong developer and build real projects.</p>
+
+            <a class="btn" href="projects.html">See My Projects</a>
         </div>
 
-        <hr>
+        <!-- RIGHT: chhota square card -->
+        <div class="side-card">
+            <div class="avatar">Sid</div>
+            <h3>Sid</h3>
+            <p>B.Tech CSE Student</p>
+        </div>
 
-        <h1>Currently Learning</h1>
-<div class="tag-container">
-    <span class="tag">HTML</span>
-    <span class="tag">CSS</span>
-    <span class="tag">C</span>
-</div>
-       <h2>Goals for the Future</h2>
-<div class="tag-container">
-    <span class="tag">C++</span>
-    <span class="tag">Python</span>
-    <span class="tag">JavaScript</span>
-    <span class="tag">Node.js</span>
-    <span class="tag">DSA</span>
-    <span class="tag">Full-Stack Development</span>
-    
-</div>
-        <!-- HOBBIES -->
-        <h2>Hobbies</h2>
-        <ul>
-            <li>Watching anime</li>
-            <li>doing random stuff</li>
-            <li>Born to customize</li>
-        </ul>
-
-        <!-- GOAL -->
-        <h2>My Goal</h2>
-        <p>To become a strong developer and build real projects.</p>
-
-        <a class="btn" href="projects.html">See My Projects</a>
     </div>
 
     <script>
         const music = document.getElementById("bgMusic");
         const btn = document.getElementById("musicBtn");
+        const volume = document.getElementById("volume");
+        const volNum = document.getElementById("volNum");
+
+        // slider ka orange fill + number update
+        function updateVolume() {
+            music.volume = volume.value / 100;
+            volNum.textContent = volume.value;
+            volume.style.setProperty("--fill", volume.value + "%");
+        }
+
+        // pichle page ki volume yaad rakho
+        const savedVol = sessionStorage.getItem("vol");
+        if (savedVol !== null) {
+            volume.value = savedVol;
+        }
+        updateVolume();
 
         btn.addEventListener("click", function () {
             if (music.paused) {
                 music.play();
                 btn.textContent = "🔊";
+                btn.classList.add("on");
             } else {
                 music.pause();
                 btn.textContent = "🔇";
+                btn.classList.remove("on");
             }
+        });
+
+        volume.addEventListener("input", function () {
+            updateVolume();
+            sessionStorage.setItem("vol", volume.value);
+        });
+
+        const navbar = document.querySelector(".navbar");
+        const slider = document.querySelector(".nav-slider");
+        const navLinks = document.querySelectorAll(".navbar a");
+        const activeLink = document.querySelector(".navbar a.active");
+
+        function moveSlider(link) {
+            slider.style.left = link.offsetLeft + "px";
+            slider.style.width = link.offsetWidth + "px";
+        }
+
+        // page khulte hi: pichle page ki jagah se naye link tak slide
+        if (activeLink) {
+            const prev = sessionStorage.getItem("navPos");
+            if (prev) {
+                const pos = JSON.parse(prev);
+                slider.style.transition = "none";
+                slider.style.left = pos.left + "px";
+                slider.style.width = pos.width + "px";
+                slider.offsetWidth;
+                slider.style.transition = "";
+                setTimeout(function () { moveSlider(activeLink); }, 50);
+            } else {
+                moveSlider(activeLink);
+            }
+        }
+
+        // hover pe pill us link tak jaye
+        navLinks.forEach(function (link) {
+            link.addEventListener("mouseenter", function () {
+                moveSlider(link);
+            });
+            link.addEventListener("click", function () {
+                if (activeLink) {
+                    sessionStorage.setItem("navPos", JSON.stringify({
+                        left: activeLink.offsetLeft,
+                        width: activeLink.offsetWidth
+                    }));
+                }
+            });
+        });
+
+        // mouse hat jaye to wapas current page pe
+        navbar.addEventListener("mouseleave", function () {
+            if (activeLink) moveSlider(activeLink);
         });
     </script>
 

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My CV</title>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+                url("Sidharth Anime Welcome Banner.png");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .page {
+            width: 95%;
+            max-width: 1000px;
+            min-height: calc(100vh - 140px);
+            box-sizing: border-box;
+            padding: 60px 40px;
+            margin: 90px 0 40px 0;
+            border-radius: 12px;
+            color: white;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url("Anime Ink and Orange Brushwork.png");
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* orange buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 6px;
+            background: #ff7a00;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid #ff7a00;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: #ff7a00;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(255, 122, 0, 0.9);
+        }
+
+        /* ===== MUSIC CONTROL (top right) ===== */
+        .music-box {
+            position: fixed;
+            top: 15px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 16px 6px 6px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            z-index: 10000;
+        }
+
+        .music-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #ff7a00;
+            background: #ff7a00;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 122, 0, 0.7);
+        }
+
+        /* music ON ho to button white */
+        .music-btn.on {
+            background: white;
+            border-color: white;
+            color: #ff7a00;
+        }
+
+        /* volume slider (orange fill + white rest) */
+        .volume {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100px;
+            height: 6px;
+            border-radius: 10px;
+            outline: none;
+            cursor: pointer;
+            background: linear-gradient(to right,
+                    #ff7a00 0%, #ff7a00 var(--fill, 50%),
+                    rgba(255, 255, 255, 0.35) var(--fill, 50%), rgba(255, 255, 255, 0.35) 100%);
+        }
+
+        .volume::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid #ff7a00;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .volume::-moz-range-thumb {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid #ff7a00;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .volume:hover::-webkit-slider-thumb,
+        .volume:active::-webkit-slider-thumb {
+            transform: scale(1.25);
+            box-shadow: 0 0 10px rgba(255, 122, 0, 0.8);
+        }
+
+        .volume:hover::-moz-range-thumb,
+        .volume:active::-moz-range-thumb {
+            transform: scale(1.25);
+            box-shadow: 0 0 10px rgba(255, 122, 0, 0.8);
+        }
+
+        /* volume number (0 - 100) */
+        .vol-num {
+            min-width: 28px;
+            text-align: right;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .volume:hover~.vol-num,
+        .volume:active~.vol-num {
+            color: #ff7a00;
+        }
+
+        /* ===== NAVBAR (pill + sliding) ===== */
+        .navbar {
+            position: fixed;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            padding: 6px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            z-index: 10000;
+        }
+
+        .navbar a {
+            position: relative;
+            z-index: 2;
+            color: #e65c00;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 1px;
+            padding: 10px 22px;
+            border-radius: 50px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: white;
+        }
+
+        .nav-slider {
+            position: absolute;
+            top: 6px;
+            bottom: 6px;
+            left: 0;
+            width: 0;
+            background: #ff7a00;
+            border-radius: 50px;
+            z-index: 1;
+            transition: left 0.35s ease, width 0.35s ease;
+        }
+
+        /* ===== CV PAGE ===== */
+        .cv-header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .cv-header h1 {
+            margin: 0;
+            font-size: 40px;
+            letter-spacing: 2px;
+        }
+
+        .cv-header p {
+            margin: 6px 0;
+        }
+
+        .cv-links a {
+            color: #ff7a00;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .cv-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* "View Project" link (orange theme) */
+        .cv-link {
+            display: inline-block;
+            margin-top: 6px;
+            color: #ff7a00;
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .cv-link:hover {
+            color: white;
+            border-bottom: 2px solid #ff7a00;
+        }
+
+        .cv-section h2 {
+            color: #ff7a00;
+            border-bottom: 2px solid #ff7a00;
+            padding-bottom: 6px;
+            margin-top: 30px;
+        }
+
+        .cv-item {
+            margin-bottom: 14px;
+        }
+
+        .cv-item h3 {
+            margin: 0;
+        }
+
+        .cv-item .date {
+            color: #cccccc;
+            font-size: 14px;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            padding: 8px 16px;
+            border: 2px solid #ff7a00;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            font-weight: bold;
+        }
+
+        .tag:hover {
+            background: #ff7a00;
+        }
+
+        /* ===== MOBILE VIEW ===== */
+        @media screen and (max-width: 768px) {
+
+            .navbar {
+                top: 10px;
+                padding: 4px;
+            }
+
+            .navbar a {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .page {
+                width: 94%;
+                min-height: auto;
+                padding: 25px 18px;
+                margin: 110px 0 30px 0;
+            }
+
+            .cv-header h1 {
+                font-size: 30px;
+            }
+
+            .cv-links a {
+                display: inline-block;
+                margin: 6px 8px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            p,
+            li {
+                font-size: 16px;
+            }
+
+            .tag {
+                padding: 7px 14px;
+                font-size: 15px;
+            }
+
+            .music-box {
+                top: 62px;
+                right: 10px;
+                gap: 8px;
+                padding: 4px 12px 4px 4px;
+            }
+
+            .music-btn {
+                width: 34px;
+                height: 34px;
+                font-size: 16px;
+            }
+
+            .volume {
+                width: 80px;
+            }
+
+            .vol-num {
+                font-size: 13px;
+            }
+        }
+
+        /* ===== PRINT / SAVE AS PDF ===== */
+        @media print {
+
+            .navbar,
+            .music-box,
+            .btn {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            .page {
+                background: white;
+                color: black;
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                max-width: none;
+            }
+
+            .cv-links a,
+            .cv-link,
+            .cv-section h2 {
+                color: black;
+                border-color: black;
+            }
+
+            .tag {
+                border-color: black;
+                background: white;
+            }
+        }
+    </style>
+</head>
+
+
+
+
+
+<body>
+
+    <nav class="navbar">
+        <span class="nav-slider"></span>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="cv.html" class="active">CV</a>
+    </nav>
+
+    <audio id="bgMusic" loop>
+        <source src="bleach-pv-ost-shiro-sagisu-hazel-fernandes-number-one-2022-ver-extended.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="music-box">
+        <button id="musicBtn" class="music-btn">🔇</button>
+        <input type="range" id="volume" class="volume" min="0" max="100" value="50">
+        <span id="volNum" class="vol-num">50</span>
+    </div>
+
+    <div class="page">
+
+        <!-- HEADER -->
+        <div class="cv-header">
+            <h1>SIDHARTH</h1>
+            <p>B.Tech CSE Student | Aspiring Software Developer</p>
+            <div class="cv-links">
+                <a href="mailto:maliksidharth24@gmail.com">Email</a>
+                <a href="https://github.com/Sid-crypto816" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+        </div>
+
+        <!-- OBJECTIVE -->
+        <div class="cv-section">
+            <h2>Objective</h2>
+            <p>First-year Computer Science student learning web development and programming fundamentals.
+                Looking to build real projects and grow into a strong software developer.</p>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="cv-section">
+            <h2>Education</h2>
+            <div class="cv-item">
+                <h3>B.Tech in Computer Science &amp; Engineering</h3>
+                <p>Chitkara University, Punjab</p>
+                <span class="date">2026 – 2030</span>
+            </div>
+        </div>
+
+        <!-- SKILLS -->
+        <div class="cv-section">
+            <h2>Skills</h2>
+            <div class="tag-container">
+                <span class="tag">HTML (Basic)</span>
+                <span class="tag">CSS (Basic)</span>
+                <span class="tag">C (Learning)</span>
+            </div>
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="cv-section">
+            <h2>Projects</h2>
+            <div class="cv-item">
+                <h3>Personal cv Website</h3>
+                <p>Multi-page website (Home, About, Projects, CV) built with HTML, CSS and a little JavaScript.
+                    Includes music player with volume control, sliding navbar and mobile-friendly layout.</p>
+                <a class="cv-link" href="index.html">View Project</a>
+            </div>
+        </div>
+
+        <!-- INTERESTS -->
+        <div class="cv-section">
+            <h2>Interests</h2>
+            <p>Watching anime, costmising everthing, building websites, learning new technologies.</p>
+        </div>
+
+        <button class="btn" onclick="window.print()">Save as PDF</button>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        const music = document.getElementById("bgMusic");
+        const btn = document.getElementById("musicBtn");
+        const volume = document.getElementById("volume");
+        const volNum = document.getElementById("volNum");
+
+        // slider ka orange fill + number update
+        function updateVolume() {
+            music.volume = volume.value / 100;
+            volNum.textContent = volume.value;
+            volume.style.setProperty("--fill", volume.value + "%");
+        }
+
+        // pichle page ki volume yaad rakho
+        const savedVol = sessionStorage.getItem("vol");
+        if (savedVol !== null) {
+            volume.value = savedVol;
+        }
+        updateVolume();
+
+        btn.addEventListener("click", function () {
+            if (music.paused) {
+                music.play();
+                btn.textContent = "🔊";
+                btn.classList.add("on");
+            } else {
+                music.pause();
+                btn.textContent = "🔇";
+                btn.classList.remove("on");
+            }
+        });
+
+        volume.addEventListener("input", function () {
+            updateVolume();
+            sessionStorage.setItem("vol", volume.value);
+        });
+
+        const navbar = document.querySelector(".navbar");
+        const slider = document.querySelector(".nav-slider");
+        const navLinks = document.querySelectorAll(".navbar a");
+        const activeLink = document.querySelector(".navbar a.active");
+
+        function moveSlider(link) {
+            slider.style.left = link.offsetLeft + "px";
+            slider.style.width = link.offsetWidth + "px";
+        }
+
+        // page khulte hi: pichle page ki jagah se naye link tak slide
+        if (activeLink) {
+            const prev = sessionStorage.getItem("navPos");
+            if (prev) {
+                const pos = JSON.parse(prev);
+                slider.style.transition = "none";
+                slider.style.left = pos.left + "px";
+                slider.style.width = pos.width + "px";
+                slider.offsetWidth;
+                slider.style.transition = "";
+                setTimeout(function () { moveSlider(activeLink); }, 50);
+            } else {
+                moveSlider(activeLink);
+            }
+        }
+
+        // hover pe pill us link tak jaye
+        navLinks.forEach(function (link) {
+            link.addEventListener("mouseenter", function () {
+                moveSlider(link);
+            });
+            link.addEventListener("click", function () {
+                if (activeLink) {
+                    sessionStorage.setItem("navPos", JSON.stringify({
+                        left: activeLink.offsetLeft,
+                        width: activeLink.offsetWidth
+                    }));
+                }
+            });
+        });
+
+        // mouse hat jaye to wapas current page pe
+        navbar.addEventListener("mouseleave", function () {
+            if (activeLink) moveSlider(activeLink);
+        });
+    </script>
+
+</body>
+
+</html>
